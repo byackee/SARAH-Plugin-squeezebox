@@ -90,11 +90,11 @@ var get_action = function ( data, cmnd, value, playername, config, callback ) {
 		case 'power 0':
 			output (callback, 'la squeezebox ' + playername +' est arretée ');
 			return;
-		case 'play ':
-			output (callback, 'la squeezebox ' + playername +' est arretée ');
+		case 'play':
+			output (callback, 'la squeezebox ' + playername +' est sur lecture ');
 			return;
-		case 'pause ':
-			output (callback, 'la squeezebox ' + playername +' est arretée ');
+		case 'pause':
+			output (callback, 'la squeezebox ' + playername +' est sur pause ');
 			return;
 		case 'power 1':
 			output (callback, 'la squeezebox ' + playername +' est en fonctionnement ');
