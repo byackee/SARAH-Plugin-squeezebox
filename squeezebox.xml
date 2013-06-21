@@ -4,24 +4,46 @@
     <tag>out.action=new Object(); </tag>
     <item weight="2">Sarah</item>
     <one-of>
+	<!--  Commands -->
       <item>allume<tag>out.action.request="power 1"</tag></item>
       <item>eteint<tag>out.action.request="power 0"</tag></item>
 	  <item>met sur pause<tag>out.action.request="pause "</tag></item>
-	  <item>lecture<tag>out.action.request="play "</tag></item>
-	  <item>monte le son<tag>out.action.request="mixer volume  +10 "</tag></item>
-	  <item>baisse le son<tag>out.action.request="mixer volume  -10 "</tag></item>
+	  <item>joue la musique<tag>out.action.request="play "</tag></item>
+	  <item>monte le son<tag>out.action.request="mixer volume ";out.action.value="+20 "</tag></item>
+	  <item>baisse le son<tag>out.action.request="mixer volume ";out.action.value="-	20 "</tag></item>
 	  <item>coupe le son<tag>out.action.request="mixer muting 1 "</tag></item>
+	  <item>regle le son<tag>out.action.request="mixer volume "</tag></item>
 	  <item>remet le son<tag>out.action.request="mixer muting 0 "</tag></item>
 	  <item>les lecteurs<tag>out.action.request="players 0 2 "</tag></item>
-	  <item>quel est le mode<tag>out.action.request="mode ";out.action.question="? "</tag></item>
-	  <item>quelle est la musique encours<tag>out.action.request="current_title ";out.action.question="? "</tag></item>
-	  <item>quel artiste est<tag>out.action.request="artist ";out.action.question="? "</tag></item>
-	  <item>quel album est<tag>out.action.request="album ";out.action.question="? "</tag></item>
+	  
+	  <!--  Informations/values § -->
+	  <item>quel est le mode<tag>out.action.request="mode ";out.action.value="? "</tag></item>
+	  <item>quelle est la musique encours<tag>out.action.request="current_title ";out.action.value="? "</tag></item>
+	  <item>quel artiste est<tag>out.action.request="artist ";out.action.value="? "</tag></item>
+	  <item>quel album est<tag>out.action.request="album ";out.action.value="? "</tag></item>
+	  <item>il y a combien d'album<tag>out.action.request="info total albums ";out.action.value="? "</tag></item>
+	  <item>il y a combien de chanson<tag>out.action.request="info total songs ";out.action.value="? "</tag></item>
+	  <item>il y a combien d'artist<tag>out.action.request="info total artists ";out.action.value="? "</tag></item>
     </one-of>
     <one-of>
       <item>dans la chambre<tag>out.action.periphId="00:04:20:2b:d6:c0 ";out.action.periphName="chambre "</tag></item>
 	  <item>dans l'entree<tag>out.action.periphId="00:00:00:00:00:01 ";out.action.periphName="entree "</tag></item>
     </one-of>
+	
+	<item repeat="0-1" weight="1.2">
+	<one-of>
+		<item>dix pourcent<tag>out.action.value="10 "</tag></item>
+		<item>vingt pourcent<tag>out.action.value="20 "</tag></item>
+		<item>trente pourcent<tag>out.action.value="30 "</tag></item>
+		<item>quarante pourcent<tag>out.action.value="40 "</tag></item>
+		<item>cinquante pourcent<tag>out.action.value="50 "</tag></item>
+		<item>soixante pourcent<tag>out.action.value="60 "</tag></item>
+		<item>soixante dix pourcent<tag>out.action.value="70 "</tag></item>
+		<item>quatre vingt pourcent<tag>out.action.value="80 "</tag></item>
+		<item>quatre vingt dix pourcent<tag>out.action.value="90 "</tag></item>
+		<item>cent pourcent<tag>out.action.value="100"</tag></item>
+    </one-of>
+	</item>
     <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/squeezebox";</tag>
   </rule>
 </grammar>

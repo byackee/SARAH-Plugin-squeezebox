@@ -18,33 +18,38 @@ exports.action = function(data, callback, config, SARAH){
 
 var set = function(data, callback, config, SARAH){ 
 	console.log('##### Squeezebox #####');
-
 var net = require('net');
-//if (!data.periphId){
-//    output(callback, "Veuillez preciser la squeezebox ");
-//	    return;
-// } else {
-	var player = data.periphId;
-  //} 
-var playername = data.periphName;
-var HOST = '192.168.1.3';
-var PORT = '9090';
-var cmnd = data.request;
-var question = data.question;
 
-if (!data.question){
+
+if (!data.periphId){
+    var player = '';
+ } else {
+	var player = data.periphId;
+  } 
+ if (!data.value){
+    var  value = '';
+ } else {
+	var value = data.value;
+  }
+  
+var playername = data.periphName;
+var HOST = config.ip;
+var PORT = config.port;
+var cmnd = data.request;
+
+if (!data.value){
     var stringtosend = player + data.request + String.fromCharCode(10);
  } else {
-	var stringtosend = player + cmnd + question + String.fromCharCode(10);
+	var stringtosend = player + cmnd + value + String.fromCharCode(10);
   } 
 
 
 var client = new net.Socket();
-client.connect(PORT, HOST, player, playername, cmnd, stringtosend, data, callback, SARAH, function() {
+client.connect(PORT, HOST, player, playername, cmnd, stringtosend, data, value, callback, SARAH, function() {
 
     console.log('CONNECTED TO: ' + HOST + ':' + PORT);
-	console.log('DEVICE: --' + data.periphName + '--');
-	console.log('COMMAND: --' + cmnd + '--');
+	console.log('DEVICE: ##' + data.periphName + '##');
+	console.log('COMMAND: ##' + cmnd + '##');
     // Write a message to the socket as soon as the client is connected, the server will receive it as message from the client 
     client.write(stringtosend);
 
@@ -57,9 +62,9 @@ client.on('data', function(data) {
     // Close the client socket completely
 data = returnString('' + data,/%3A/g,":");
 data = returnString('' + data,player,"");
-get_action('' + data, cmnd, playername, config, callback)
-
-
+console.log(cmnd + value);
+   
+get_action('' + data, cmnd, value, playername, config, callback)
    
     client.destroy();
 });
@@ -73,11 +78,11 @@ client.on('close', function() {
 var returnString = function (data, stringtoreplace, word) {
 var str = data;
 str = str.replace(stringtoreplace,word);
-console.log('return:' + str);
+console.log('return: ' + str);
 return str;
 }
 
-var get_action = function ( data, cmnd, playername, config, callback ) {
+var get_action = function ( data, cmnd, value, playername, config, callback ) {
 	switch ( cmnd ) {
 		case 'mode ':
 			output (callback, 'la squeezebox ' + playername +' est sur ' + returnString(data, cmnd, ""));
@@ -85,9 +90,18 @@ var get_action = function ( data, cmnd, playername, config, callback ) {
 		case 'power 0':
 			output (callback, 'la squeezebox ' + playername +' est arretée ');
 			return;
+		case 'play ':
+			output (callback, 'la squeezebox ' + playername +' est arretée ');
+			return;
+		case 'pause ':
+			output (callback, 'la squeezebox ' + playername +' est arretée ');
+			return;
 		case 'power 1':
 			output (callback, 'la squeezebox ' + playername +' est en fonctionnement ');
 			return;	
+		case ('mixer volume ') :
+			output (callback, 'fait');
+			return;
         case 'current_title ':
 		    data = returnString(data, cmnd, "")
 			output (callback, 'la squeezebox ' + playername + ' joue '   + returnString(data, /%20/g, " "));			
