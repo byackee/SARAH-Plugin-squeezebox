@@ -5,30 +5,52 @@
     <item weight="2">Sarah</item>
     <one-of>
 	<!--  Commands -->
-      <item>allume<tag>out.action.request="power 1"</tag></item>
-      <item>eteint<tag>out.action.request="power 0"</tag></item>
-	  <item>met sur pause<tag>out.action.request="pause "</tag></item>
-	  <item>joue la musique<tag>out.action.request="play "</tag></item>
-	  <item>monte le son<tag>out.action.request="mixer volume ";out.action.value="+20 "</tag></item>
-	  <item>baisse le son<tag>out.action.request="mixer volume ";out.action.value="-	20 "</tag></item>
-	  <item>coupe le son<tag>out.action.request="mixer muting 1 "</tag></item>
-	  <item>regle le son<tag>out.action.request="mixer volume "</tag></item>
-	  <item>remet le son<tag>out.action.request="mixer muting 0 "</tag></item>
-	  <item>les lecteurs<tag>out.action.request="players 0 2 "</tag></item>
-	  
-	  <!--  Informations/values § -->
-	  <item>quel est le mode<tag>out.action.request="mode ";out.action.value="? "</tag></item>
-	  <item>quelle est la musique encours<tag>out.action.request="current_title ";out.action.value="? "</tag></item>
-	  <item>quel artiste est<tag>out.action.request="artist ";out.action.value="? "</tag></item>
-	  <item>quel album est<tag>out.action.request="album ";out.action.value="? "</tag></item>
-	  <item>il y a combien d'album<tag>out.action.request="info total albums ";out.action.value="? "</tag></item>
-	  <item>il y a combien de chanson<tag>out.action.request="info total songs ";out.action.value="? "</tag></item>
-	  <item>il y a combien d'artist<tag>out.action.request="info total artists ";out.action.value="? "</tag></item>
+		<item>allume la squeezebox<tag>out.action.Action="power 1 ";out.action.request="set"</tag></item>
+		<item>eteint la squeezebox<tag>out.action.Action="power 0 ";out.action.request="set"</tag></item>
+		<item>pause sur squeezebox<tag>out.action.Action="pause ";out.action.request="set"</tag></item>
+		<item>play sur squeezebox<tag>out.action.Action="play ";out.action.request="set"</tag></item>
+		<item>monte le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.value="+20 ";out.action.request="set"</tag></item>
+		<item>baisse le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.value="-20 ";out.action.request="set"</tag></item>
+		<item>coupe le son de la squeezebox<tag>out.action.Action="mixer muting 1 ";out.action.request="set"</tag></item>
+		<item>regle le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.request="set"</tag></item>
+		<item>remet le son de la squeezebox<tag>out.action.Action="mixer muting 0 ";out.action.request="set"</tag></item>
+		<item>mets a jour les squeezebox<tag>out.action.request="update"</tag></item>
+		<!-- <item>alarme<tag>out.action.request="alarms"</tag></item>-->
+		<item>musique aléatoire<tag>out.action.Action="randomplay tracks ";out.action.request="set"</tag></item>
+		<item>album aléatoire<tag>out.action.Action="randomplay albums ";out.action.request="set"</tag></item>
+		<item>favoris<tag>out.action.Action="favorites playlist play item_id: ";out.action.request="set"</tag></item>
+		
+		<item>Quel est le morceau<tag>out.action.Action="current_title ";out.action.value="? "</tag></item>
+		<item>Quel est l'artiste<tag>out.action.Action="artist ";out.action.value="? "</tag></item>
+		<item>Quel est l'album<tag>out.action.Action="album ";out.action.value="? "</tag></item>
+		<item>Quel est le statut<tag>out.action.Action="mode ";out.action.value="? "</tag></item>
+		<item>combien de chanson<tag>out.action.Action="info total songs ";out.action.value="? "</tag></item>
+		
     </one-of>
-    <one-of>
-      <item>dans la chambre<tag>out.action.periphId="00:04:20:2b:d6:c0 ";out.action.periphName="chambre "</tag></item>
-	  <item>dans l'entree<tag>out.action.periphId="00:00:00:00:00:01 ";out.action.periphName="entree "</tag></item>
+	
+	<item repeat="0-1" weight="1.2">
+	<one-of>
+		<item>zero<tag>out.action.value="0 "</tag></item>
+		<item>un<tag>out.action.value="1 "</tag></item>
+		<item>deux<tag>out.action.value="2 "</tag></item>
+		<item>trois<tag>out.action.value="3 "</tag></item>
+		<item>quatre<tag>out.action.value="4 "</tag></item>
+		<item>cinq<tag>out.action.value="5 "</tag></item>
+		<item>six<tag>out.action.value="6 "</tag></item>
+		<item>sept<tag>out.action.value="7 "</tag></item>
+		<item>huit<tag>out.action.value="8 "</tag></item>
+		<item>neuf<tag>out.action.value="9 "</tag></item>
+		<item>dix<tag>out.action.value="10"</tag></item>
     </one-of>
+	</item>
+	
+<!-- § -->
+  <one-of>
+    <item>Chambre<tag>out.action.periphName="Chambre"</tag></item>
+    <item>Salon<tag>out.action.periphName="Salon"</tag></item>
+    <item>Couloir<tag>out.action.periphName="Couloir"</tag></item>
+  </one-of>
+<!-- § Squeezebox Name -->
 	
 	<item repeat="0-1" weight="1.2">
 	<one-of>

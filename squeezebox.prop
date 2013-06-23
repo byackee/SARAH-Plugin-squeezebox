@@ -5,7 +5,8 @@
       "version"    : "0.9",
       "answers"    : "Je m'en occupe !|Voilà qui est fait !|C'est fait !|Voilà !|Tout de suite !",
       "ip"     : "192.168.1.3",
-	  "port"     : "9090"
+	  "port"     : "9090",
+	  "Nbr_squeezebox"     : "5"
     }
   }
 }
