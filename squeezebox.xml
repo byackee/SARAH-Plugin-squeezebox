@@ -2,7 +2,8 @@
   <rule id="rulesqueezebox" scope="public">
     <example>Sarah allume la lampe du salon</example>
     <tag>out.action=new Object(); </tag>
-    <item weight="2">Sarah</item>
+    <tag>out.action.periphName="Salon"</tag> <!-- lecteur par défaut-->
+   <item weight="2">Sarah</item>
     <one-of>
 	<!--  Commands -->
 		<item>allume la squeezebox<tag>out.action.Action="power 1 ";out.action.request="set"</tag></item>
@@ -15,14 +16,29 @@
 		<item>regle le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.request="set"</tag></item>
 		<item>remet le son de la squeezebox<tag>out.action.Action="mixer muting 0 ";out.action.request="set"</tag></item>
 		<item>mets a jour les squeezebox<tag>out.action.request="update"</tag></item>
-		
+		<!--commandes musique (sans le mot squeezebox)-->
+		<item>allume la musique<tag>out.action.Action="power 1 ";out.action.request="set"</tag></item>
+		<item>arrête la musique<tag>out.action.Action="pause ";out.action.request="set"</tag></item>
+		<item>mets en pause la musique<tag>out.action.Action="pause ";out.action.request="set"</tag></item>
+		<item>lance la musique<tag>out.action.Action="play ";out.action.request="set"</tag></item>
+		<item>joue la musique<tag>out.action.Action="play ";out.action.request="set"</tag></item>
+		<item>monte le son de la musique<tag>out.action.Action="mixer volume %2B20 ";out.action.request="set"</tag></item>
+		<item>baisse le son de la musique<tag>out.action.Action="mixer volume -20 ";out.action.request="set"</tag></item>
+		<item>monte un peu le son de la musique<tag>out.action.Action="mixer volume %2B10 ";out.action.request="set"</tag></item>
+		<item>baisse un peu le son de la musique<tag>out.action.Action="mixer volume -10 ";out.action.request="set"</tag></item>
+		<item>monte légèrement le son de la musique<tag>out.action.Action="mixer volume %2B5 ";out.action.request="set"</tag></item>
+		<item>baisse légèrement le son de la musique<tag>out.action.Action="mixer volume -5 ";out.action.request="set"</tag></item>
+		<item>coupe le son de la musique<tag>out.action.Action="mixer muting 1 ";out.action.request="set"</tag></item>
+		<item>regle le son de la musique<tag>out.action.Action="mixer volume ";out.action.request="set"</tag></item>
+		<item>remet le son de la musique<tag>out.action.Action="mixer muting 0 ";out.action.request="set"</tag></item>
+    		<!--/commandes musique (sans le mot squeezebox)-->
 		<item>chanson suivante<tag>out.action.Action="playlist index %2B1 ";out.action.request="set"</tag></item>
     		<item>chanson précédente<tag>out.action.Action="playlist index -1 ";out.action.request="set"</tag></item>
     		<item>piste suivante<tag>out.action.Action="playlist index %2B1 ";out.action.request="set"</tag></item>
     		<item>piste précédente<tag>out.action.Action="playlist index -1 ";out.action.request="set"</tag></item>
 	    	<!--commande libre pour ecouter un artiste de sa bibliotheque-->
 		 <item>je veux écouter<ruleref special="GARBAGE" /><tag>out.action._attributes.dictation="true";out.action.Action="playlist loadalbum * ";out.action.request="set"</tag></item>
-		<!--commande libre pour ecouter un artiste de sa bibliotheque-->
+		<!--/commande libre pour ecouter un artiste de sa bibliotheque-->
 
 		<!-- <item>alarme<tag>out.action.request="alarms"</tag></item>-->
 		<item>musique aléatoire<tag>out.action.Action="randomplay tracks ";out.action.request="set"</tag></item>
@@ -58,6 +74,7 @@
     <item>Chambre<tag>out.action.periphName="Chambre"</tag></item>
     <item>Salon<tag>out.action.periphName="Salon"</tag></item>
     <item>Couloir<tag>out.action.periphName="Couloir"</tag></item>
+    <item>Salle de bain<tag>out.action.periphName="Salle_de_bain"</tag></item>
   </one-of>
 <!-- § Squeezebox Name -->
 	
