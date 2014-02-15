@@ -1,4 +1,19 @@
  exports.action = function(data, callback, config, SARAH){
+  //partie spéciale demande libre
+ if (data.dictation){
+  var album = data.dictation;
+   var album1 = album.replace(/Sarah /i,"");
+   var album2 = album1.replace(/Jarvis /i,"");
+   var album3 = album2.replace(/je veux écouter /i,""); 
+   var album4 = album3.replace(/dans le /i,"");
+   var album5 = album4.replace(/dans la /i,"");
+   var album6 = album5.replace(/cuisine /i,"");
+   var album7 = album6.replace(/salon/i,"");
+   Song = album7 + "*";
+ } else {
+   Song = ""; 
+ }
+  //fin de la partie spéciale demande libre
 // CONFIG
   config = config.modules.squeezebox;
   if (!config.ip){
@@ -133,7 +148,7 @@ for ( var i = 0; i < json.length; i++ ) {
 		if ( found ) {
 		var modulefind = module;
 			if (!value){
-				var stringtosend = module.playerid + ' ' + cmnd + String.fromCharCode(10);
+				var stringtosend = module.playerid + ' ' + cmnd + Song + String.fromCharCode(10);
 			} else {
 				var stringtosend = module.playerid + ' ' + cmnd + value + String.fromCharCode(10);
 			} 
