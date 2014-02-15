@@ -9,12 +9,21 @@
 		<item>eteint la squeezebox<tag>out.action.Action="power 0 ";out.action.request="set"</tag></item>
 		<item>pause sur squeezebox<tag>out.action.Action="pause ";out.action.request="set"</tag></item>
 		<item>play sur squeezebox<tag>out.action.Action="play ";out.action.request="set"</tag></item>
-		<item>monte le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.value="+20 ";out.action.request="set"</tag></item>
+		<item>monte le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.value="%2B20 ";out.action.request="set"</tag></item>
 		<item>baisse le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.value="-20 ";out.action.request="set"</tag></item>
 		<item>coupe le son de la squeezebox<tag>out.action.Action="mixer muting 1 ";out.action.request="set"</tag></item>
 		<item>regle le son de la squeezebox<tag>out.action.Action="mixer volume ";out.action.request="set"</tag></item>
 		<item>remet le son de la squeezebox<tag>out.action.Action="mixer muting 0 ";out.action.request="set"</tag></item>
 		<item>mets a jour les squeezebox<tag>out.action.request="update"</tag></item>
+		
+		<item>chanson suivante<tag>out.action.Action="playlist index %2B1 ";out.action.request="set"</tag></item>
+    		<item>chanson précédente<tag>out.action.Action="playlist index -1 ";out.action.request="set"</tag></item>
+    		<item>piste suivante<tag>out.action.Action="playlist index %2B1 ";out.action.request="set"</tag></item>
+    		<item>piste précédente<tag>out.action.Action="playlist index -1 ";out.action.request="set"</tag></item>
+	    	<!--commande libre pour ecouter un artiste de sa bibliotheque-->
+		 <item>je veux écouter<ruleref special="GARBAGE" /><tag>out.action._attributes.dictation="true";out.action.Action="playlist loadalbum * ";out.action.request="set"</tag></item>
+		<!--commande libre pour ecouter un artiste de sa bibliotheque-->
+
 		<!-- <item>alarme<tag>out.action.request="alarms"</tag></item>-->
 		<item>musique aléatoire<tag>out.action.Action="randomplay tracks ";out.action.request="set"</tag></item>
 		<item>album aléatoire<tag>out.action.Action="randomplay albums ";out.action.request="set"</tag></item>
